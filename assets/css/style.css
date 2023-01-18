@@ -606,6 +606,11 @@ section {
   font-size: 26px;
 }
 
+.about .content h2 {
+  font-weight: 500;
+  font-size: 20px;
+}
+
 .about .content ul {
   list-style: none;
   padding: 0;
