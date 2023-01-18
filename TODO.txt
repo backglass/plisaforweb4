@@ -1,0 +1,18 @@
+CHECKEAR LA ORTOGRAFÍA
+Borrar metadatos de las fotos de home.
+*Para refinar mirar la foto de trajes regionales la tercera foto*Seguir para ver
+Seguir con plisadpRecto.html y terminarla para poder hacer las demás // Me he quedado configurando el contacto*
+Seguir con plisadpRecto.html y terminarla para poder hacer las demás //Aumento sobre imagenes
+
+
+
+
+
+
+
+
+Añadido al h1 del titulo estilo inline style="padding-top: 20px;" para que baje y no solape con la navbar
+
+
+
+

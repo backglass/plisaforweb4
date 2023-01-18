@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "bootstrap-modal-image": "^1.0.0",
+    "simple-autoreload-server": "^0.2.15"
+  }
+}
