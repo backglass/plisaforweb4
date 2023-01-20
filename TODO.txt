@@ -5,8 +5,29 @@ Borrar metadatos de las fotos de home.
 Revisar bien los títulos de las paginas
 
 
-
-
+              <div class="carousel-item active" data-bs-interval="5000">
+                <img src="./assets/img/imghome/slider_colegio.jpeg" class="d-block w-100" alt="Primera imagen de portada, Falda plisada">
+                <div class="carousel-caption d-none d-md-block">
+                  
+                  <h1><span style="color: rgb(241, 241, 241);">Plisamos uniformes escolares</span></h1>
+                  
+                </div>
+              </div>
+              
+              <div class="carousel-item" data-bs-interval="5000">
+                <img  src="./assets/img/imgHome/panoramica_soleil_altacostura.jpeg" class="d-block w-100" alt="Segunda imagen de portada Niña falda plisada">
+                <div class="carousel-caption d-none d-md-block">
+                  <h1><span style="color: rgb(78, 68, 68);">Alta costura artesanal</span></h1>
+                  
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="./assets/img/imgHome/slider_regional1.jpeg" class="d-block w-100" alt="tercera imagen de portada trajes regionales">
+                <div class="carousel-caption d-none d-md-block">
+                  <h1><span style="color: rgb(246, 244, 244);">Plisados fiestas regionales</span></h1>
+                  
+                </div>
+              </div>
 
 
 
