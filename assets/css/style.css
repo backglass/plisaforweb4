@@ -21,6 +21,7 @@
 body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
+
 }
 
 a {
@@ -416,7 +417,7 @@ h6 {
   width: 100%;
   height: 80vh;
   position: relative;
- /*   background: url("../img/hero-bg.jpg") top center;*/
+  background: url("../img/imgHome/fondo.jpeg") top center;
   background-color: #fff;
   background-size: cover;
   position: relative;
@@ -636,6 +637,11 @@ section {
 
 .about .content p:last-child {
   margin-bottom: 0;
+}
+.about .content p {
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
 }
 
 .about .content .btn-learn-more {
@@ -1395,12 +1401,13 @@ section {
 .team .member .member-info h4 {
   font-weight: 700;
   margin-bottom: 5px;
-  font-size: 18px;
+  font-size: 24px;
   color: #124265;
   
 }
 
 .team .member .member-info span {
+  padding-top: 3px;
   display: block;
   font-size: 16px;
   font-weight: 400;
@@ -1409,7 +1416,7 @@ section {
 
 .team .member .member-info p {
   font-style: italic;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 26px;
   color: #777777;
 }
