@@ -30,7 +30,14 @@
 
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
-  
+
+  <!-- Google tag (gtag.js) -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-2348741-1"></script>
+
+
+
+
     <!-- =======================================================
     * Template Name: OnePage - v4.10.0
     * Template URL: https://bootstrapmade.com/onepage-multipurpose-bootstrap-template/
@@ -96,7 +103,7 @@
             <br/>
             <h1 style="padding-top: 20px;">Plisado uniformes y escocesas</h1>
 
-            </button>
+          
           </div>
           
           <div class="row content">
@@ -402,18 +409,62 @@
       </div>
     </footer><!-- End Footer -->
 
-    <div id="cookie-panel"  style="position: fixed; bottom: 0; width: 100%; background-color: #f1f1f1; text-align: center; padding: 10px;">
+    <div id="cookie-panel"  style="position: fixed; bottom: 0; width: 100%; background-color: #d3d0d0; text-align: center; padding: 10px;">
       <p>Este sitio web usa cookies para mejorar la experiencia del usuario. Al navegar por el sitio, aceptas el uso de cookies. <a href="#">Más información</a></p>
         <div class="container">
-      <button type="button" class="btn btn-secondary" onclick="closeCookiePanel()">Rechazar</button>
-      <button type="button" class="btn btn-success" onclick="closeCookiePanel()">Aceptar</button>
+      <button type="button" class="btn btn-secondary" onclick="rechazarCookies()">Rechazar</button>
+      <button type="button" class="btn btn-success" onclick="aceptarCookies()">Aceptar</button>
         </div> 
     </div>
     
     <script>
-      function closeCookiePanel(){
-        document.getElementById("cookie-panel").style.display = "none";
+     
+      if (!document.cookie.includes("aceptado")) { 
+        console.log("No hay cookies");
       }
+       
+      if(document.cookie.includes("aceptado=1")){
+     
+        document.getElementById("cookie-panel").style.display = "none";
+        console.log("1")
+
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+      
+        gtag('config', 'UA-2348741-1');
+        
+      }
+
+      if(document.cookie.includes("aceptado=2")){
+        document.getElementById("cookie-panel").style.display = "none";
+         console.log ("No hay consentimiento")
+      
+      }
+
+
+      
+      function aceptarCookies(){ 
+        
+          document.getElementById("cookie-panel").style.display = "none"
+          document.cookie = "aceptado = 1; expires=Thu, 18 Jan 2081 00:00:00 UTC;  path=/";
+          console.log("1 " + document.cookie)
+          
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+      
+        gtag('config', 'UA-2348741-1');
+          
+        }
+
+      
+     function rechazarCookies(){
+        document.getElementById("cookie-panel").style.display = "none"
+        document.cookie = "aceptado= 2; expires=Thu, 18 Jan 2081 00:00:00 UTC;  path=/";
+      }
+      console.log(document.cookie);
+ 
     </script>
 
 
@@ -492,7 +543,7 @@
            }
 
             </script>		
-          <!-- Button trigger modal -->
+          
 
 </button>
 
