@@ -22,7 +22,7 @@
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+ 
 
 
   <!-- Template Main CSS File -->
@@ -190,8 +190,8 @@
 
       </div>
     </section><!-- End Team Section -->
-    <div id="cookie-panel"  style="position: fixed; bottom: 0; width: 100%; background-color: #d3d0d0; text-align: center; padding: 10px;">
-      <p>Este sitio web usa cookies para mejorar la experiencia del usuario. Al navegar por el sitio, aceptas el uso de cookies. <a href="#">Más información</a></p>
+    <div id="cookie-panel"  style="position: fixed; bottom: 0; width: 100%; background-color: #434242; text-align: center; padding: 10px; color: #fff">
+      <p>Usamos cookies para entender mejor cómo se utiliza nuestro sitio web y mejorar tu experiencia. Solo utilizamos Google Analytics. Al continuar navegando, aceptas su uso. <a href="./privacidad.html">Más información</a></p>
         <div class="container">
       <button type="button" class="btn btn-secondary" onclick="rechazarCookies()">Rechazar</button>
       <button type="button" class="btn btn-success" onclick="aceptarCookies()">Aceptar</button>
@@ -292,19 +292,19 @@
   
             <div class="col-lg-8 mt-5 mt-lg-0">
   
-              <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+              <form action="./enviar-formulario.php" id = "formulario-contacto" method="post" role="form" class="php-email-form">
                 <div class="row gy-2 gx-md-3">
                   <div class="col-md-6 form-group">
-                    <input type="text" name="name" class="form-control" id="name" placeholder="Su nombre" required>
+                    <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Su nombre" required>
                   </div>
                   <div class="col-md-6 form-group">
                     <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
                   </div>
                   <div class="form-group col-12">
-                    <input type="text" class="form-control" name="subject" id="subject" placeholder="Asunto" required>
+                    <input type="text" class="form-control" name="descripcion" id="descripcion" placeholder="Asunto" required>
                   </div>
                   <div class="form-group col-12">
-                    <textarea class="form-control" name="message" rows="5" placeholder="Mensaje" required></textarea>
+                    <textarea class="form-control" id="mensaje" name="mensaje" rows="5" placeholder="mensaje" required></textarea>
                   </div>
                   <div class="my-3 col-12">
                     <div class="loading">Loading</div>
@@ -336,10 +336,7 @@
             &copy; Copyright <strong><span>bendercore</span></strong>
           </div>
           <div class="credits">
-            <!-- All the links in the footer should remain intact. -->
-            <!-- You can delete the links only if you purchased the pro version. -->
-            <!-- Licensing information: https://bootstrapmade.com/license/ -->
-            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/onepage-multipurpose-bootstrap-template/ -->
+ 
             Creado por <a href="https://www.bencercore.com">bendercore</a> Inspirado en <a href="https://bootstrapmade.com/">BootstrapMade</a>
           </div>
         </div>
@@ -370,7 +367,60 @@
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
-
+<script>
+      //Obtener el formulario
+      const form = document.getElementById("formulario-contacto");
+  
+      //Agregar un evento al formulario para detectar cuando se envía
+      form.addEventListener("submit", enviarFormulario);
+      
+      function enviarFormulario(event) {
+          event.preventDefault(); //Evitar que la página se recargue al enviar el formulario
+      
+          //Crear una instancia del objeto XMLHttpRequest
+          const xhr = new XMLHttpRequest();
+      
+          //Abrir una conexión con el archivo PHP
+          xhr.open("POST", "enviar-formulario.php", true);
+      
+          //Establecer la cabecera para enviar los datos como un formulario
+          xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      
+          //Crear un objeto con los datos del formulario
+          const data = {
+              nombre: nombre.value,
+              email: email.value,
+              descripcion: descripcion.value,
+              mensaje: mensaje.value
+          };
+      
+          // Convertir el objeto en una cadena para enviarlo como una petición
+          const dataString = JSON.stringify(data);
+      
+          //Enviar los datos al archivo PHP
+          xhr.send(dataString);
+      
+          //Controlar cuando el archivo PHP ha terminado de procesar los datos
+          xhr.onreadystatechange = function() {
+              if (xhr.readyState === 4 && xhr.status === 200) {
+                  //Obtener la respuesta del archivo PHP
+                  const respuesta = xhr.responseText;
+      
+                  //Hacer algo con la respuesta (como mostrar un mensaje al usuario)
+                  console.log(respuesta);
+                  console.log(dataString);
+              }
+              const form = document.getElementById("formulario-contacto");
+              const elements = form.elements;
+              
+              [...elements].forEach((elem) => {
+                elem.value = "";
+              });
+          }
+      }
+    
+         
+</script>
   
   </body>
   
