@@ -41,3 +41,4 @@ url("./fonts/bootstrap-icons.woff?24e3eb84d0bcaf83d77f904c78ac1f47") format("wof
 
 .bi-facebook::before { content: "\F344"; }
 .bi-instagram::before { content: "\F437"; }
+.bi-list::before { content: "\F479"; }
