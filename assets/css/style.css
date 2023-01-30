@@ -1987,7 +1987,9 @@ section {
 /* Animacion para simular un zoom en los divs de modelo */
 .zoom:hover {
   transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
 }
+
 /*----------------------------
 # img en idex minimalistas
 /*----------------------------*/
