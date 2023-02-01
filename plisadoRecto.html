@@ -596,6 +596,12 @@
               descripcion: descripcion.value,
               mensaje: mensaje.value
           };
+                //Validar que los campos no estén vacíos si estan vacios no se envia el formulario 
+      //Aunque esten requeridos en el formulario. (Esto es solo para evitar que se envie el formulario vacio,bots)
+      if (data.nombre == "" || data.email == "" || data.descripcion == "" || data.mensaje == "") {
+        console.log("error")
+        return false;
+      }
       
           // Convertir el objeto en una cadena para enviarlo como una petición
           const dataString = JSON.stringify(data);
