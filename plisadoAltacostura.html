@@ -428,80 +428,82 @@
     </div>
   </div>
   <script>
-    //Obtener el formulario
-    const form = document.getElementById("formulario-contacto");
 
-    //Agregar un evento al formulario para detectar cuando se envía
-    form.addEventListener("submit", enviarFormulario);
-    
-    function enviarFormulario(event) {
-        event.preventDefault(); //Evitar que la página se recargue al enviar el formulario
-    
-        //Crear una instancia del objeto XMLHttpRequest
-        const xhr = new XMLHttpRequest();
-    
-        //Abrir una conexión con el archivo PHP
-        xhr.open("POST", "enviar-formulario.php", true);
-    
-        //Establecer la cabecera para enviar los datos como un formulario
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    
-        //Crear un objeto con los datos del formulario
-        const data = {
-            nombre: nombre.value,
-            email: email.value,
-            descripcion: descripcion.value,
-            mensaje: mensaje.value
-        };
-       //Validar que los campos no estén vacíos si estan vacios no se envia el formulario 
-      //Aunque esten requeridos en el formulario. (Esto es solo para evitar que se envie el formulario vacio,bots)
-      if (data.nombre == "" || data.email == "" || data.descripcion == "" || data.mensaje == "") {
-        console.log("error")
-        return false;
+    //Ejecutar un codigo si el dispositvo es movil o otro si es pc 
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+
+      // Codigo para dispositivos moviles
+
+    } else {
+      // Codigo para dispositivos de escritorio
+
+      /* 
+      Este código crea una ventana emergente (modal) utilizando la librería Bootstrap.
+      La función showModal() se ejecuta cuando el usuario hace clic en una imagen.
+      Esto cambia la imagen dentro del modal para que sea la misma que el usuario hizo clic y
+      luego muestra el modal. El parámetro 'keyboard' se establece en false para deshabilitar el
+      cierre del modal al presionar la tecla Esc.
+      */
+
+      var myModal = new bootstrap.Modal(document.getElementById('exampleModalToggle'), {
+        keyboard: false
+      })
+
+      function showModal(a) {
+        // Guardamos la imagen en la variable img
+        var img = a.src
+        var title = a.alt
+
+        // Cambiamos el src de la imagen del modal
+        var iM = document.getElementById('imgModal').src = img
+        var iM = document.getElementById('TitleModal').innerHTML = title
+        // console.log(iM)
+
+        // Obtenemos el elemento que contiene el modal y lo guardamos en modalToggle
+        var modalToggle = document.getElementById('toggleMyModal') // relatedTarget
+
+        // Mostramos el modal con los parámetros 
+        myModal.show(modalToggle)
+
+
       }
-    
-        // Convertir el objeto en una cadena para enviarlo como una petición
-        const dataString = JSON.stringify(data);
-    
-        //Enviar los datos al archivo PHP
-        xhr.send(dataString);
-    
-        //Controlar cuando el archivo PHP ha terminado de procesar los datos
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                //Obtener la respuesta del archivo PHP
-                const respuesta = xhr.responseText;
-    
-                //Hacer algo con la respuesta (como mostrar un mensaje al usuario)
-                console.log(respuesta);
-                console.log(dataString);
-            }
-
-            //Muestra mensaje de exito al enviar el formulario dyrante 3 segundos
-            //Muestra el elemente con id mensaje1 y lo oculta despues de 3 segundos
-            const pop_ip = () => {
-              document.getElementById("mensaje1").style.display = "block";
-              setTimeout(function(){ 
-                document.getElementById("mensaje1").style.display = "none";
-                console.log("hola");
-              }, 3000);
-          }
-          pop_ip();
-
-            const form = document.getElementById("formulario-contacto");
-            const elements = form.elements;
-            
-            [...elements].forEach((elem) => {
-              elem.value = "";
-            });
-           
-        }
-        //Execute next function during 3 seconds
-
     }
-  
+    </script>
+    <script>
+      document.getElementById("formulario-contacto").addEventListener("submit", function(e) {
+        e.preventDefault();
+        
+        var nombre = document.getElementById("nombre").value;
+        var email = document.getElementById("email").value;
+        var descripcion = document.getElementById("descripcion").value;
+        var mensaje = document.getElementById("mensaje").value;
+      
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "enviar-formulario.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function() {
+          if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+            document.getElementById("loading").style.display = "none";
+            document.getElementById("mensaje1").style.display = "block";
+          }
+        };
+        xhr.send("nombre=" + nombre + "&email=" + email + "&descripcion=" + descripcion + "&mensaje=" + mensaje);
+      
        
-</script>
+        document.getElementById("mensaje1").style.display = "block";
+        const form = document.getElementById("formulario-contacto");
+        const elements = form.elements;
+        
+        [...elements].forEach((elem) => {
+          elem.value = "";
+        });
+        setTimeout(function(){ 
+          document.getElementById("mensaje1").style.display = "none";
+          console.log("hola");
+        }, 3000);
+      });
+    
+          </script>
 
 
 
