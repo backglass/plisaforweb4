@@ -30,6 +30,8 @@
     <!-- Google tag (gtag.js) -->
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-2348741-1"></script>
+<script src="https://www.google.com/recaptcha/api.js?render=6LeJ7Y0lAAAAAFyb0uqK_PHAd5D4lCbPCFToyqEl"></script>
+
 
 
 </head>
@@ -42,7 +44,7 @@
  <header id="header" class="fixed-top">
   <div class="container d-flex align-items-center justify-content-between">
 
-    <h1 class="logo"><a href="index.html">Plisafor plisados</a></h1>
+    <h1 class="logo"><a href="index.html">Plisados Plisafor</a></h1>
 
 
     <nav id="navbar" class="navbar">
@@ -54,7 +56,7 @@
         <li><a class="nav-link scrollto" href="./plisadosOtros.html">Otros plisados</a></li>
 
         <li><a class="nav-link scrollto" href="#contact">Contacto</a></li>
-        <!-- <li><a class="getstarted scrollto" href="#about">Get Started</a></li> -->
+
       </ul>
       <i class="bi bi-list mobile-nav-toggle"></i>
     </nav><!-- .navbar -->
@@ -364,42 +366,40 @@
     <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
     
   
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bs5-lightbox@1.8.2/dist/index.bundle.min.js"></script> -->
 
-    <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
 <script>
   document.getElementById("formulario-contacto").addEventListener("submit", function(e) {
     e.preventDefault();
-    
-    var nombre = document.getElementById("nombre").value;
-    var email = document.getElementById("email").value;
-    var descripcion = document.getElementById("descripcion").value;
-    var mensaje = document.getElementById("mensaje").value;
   
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "enviar-formulario.php", true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.onreadystatechange = function() {
-      if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-        document.getElementById("loading").style.display = "none";
-        document.getElementById("mensaje1").style.display = "block";
-      }
-    };
-    xhr.send("nombre=" + nombre + "&email=" + email + "&descripcion=" + descripcion + "&mensaje=" + mensaje);
+    grecaptcha.execute('6LeJ7Y0lAAAAAFyb0uqK_PHAd5D4lCbPCFToyqEl', {action: 'formulario_contacto'}).then(function(token) {
+      var nombre = document.getElementById("nombre").value;
+      var email = document.getElementById("email").value;
+      var descripcion = document.getElementById("descripcion").value;
+      var mensaje = document.getElementById("mensaje").value;
   
-   
-    document.getElementById("mensaje1").style.display = "block";
-    const form = document.getElementById("formulario-contacto");
-    const elements = form.elements;
-    
-    [...elements].forEach((elem) => {
-      elem.value = "";
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", "enviar-formulario.php", true);
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+          document.getElementById("loading").style.display = "none";
+          document.getElementById("mensaje1").style.display = "block";
+        }
+      };
+      xhr.send("nombre=" + nombre + "&email=" + email + "&descripcion=" + descripcion + "&mensaje=" + mensaje + "&recaptcha_response=" + token);
+  
+      document.getElementById("mensaje1").style.display = "block";
+      const form = document.getElementById("formulario-contacto");
+      const elements = form.elements;
+  
+      [...elements].forEach((elem) => {
+        elem.value = "";
+      });
+      setTimeout(function() {
+        document.getElementById("mensaje1").style.display = "none";
+      }, 3000);
     });
-    setTimeout(function(){ 
-      document.getElementById("mensaje1").style.display = "none";
-      console.log("hola");
-    }, 3000);
   });
 
       </script>
