@@ -1,6 +1,4 @@
-Thanks for downloading this template!
+Web para la empresa de servicios de plisados de tejidos y faldas Plisafor
 
-Template Name: OnePage
-Template URL: https://bootstrapmade.com/onepage-multipurpose-bootstrap-template/
-Author: BootstrapMade.com
-License: https://bootstrapmade.com/license/
+Usando bootstrap y el template OnePage de BootstrapMade
+Web URL: https://www.plisafor.com
