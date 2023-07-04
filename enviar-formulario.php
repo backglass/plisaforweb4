@@ -8,7 +8,7 @@ if(isset($_POST['nombre']) && isset($_POST['email']) && isset($_POST['descripcio
   $descripcion = $_POST['descripcion'];
   $mensaje = $_POST['mensaje'];
 
-  $recaptcha_secret = "6LeJ7Y0lAAAAANrOPH6BjNukIFouDmt-x8Wdc21b";
+  $recaptcha_secret = "";
   $recaptcha_response = isset($_POST['recaptcha_response']) ? $_POST['recaptcha_response'] : '';
 
   if(empty($recaptcha_response)){
